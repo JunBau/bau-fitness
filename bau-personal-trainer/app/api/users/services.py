@@ -3,9 +3,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 from .models import UserSignup
-from .database import User
-from .exceptions import DuplicateEmailError, ValidationError, DatabaseError
-from .constants import ErrorMessages
+from .entities import User
+from app.exceptions import DuplicateEmailError, ValidationError, DatabaseError
+from app.constants import ErrorMessages
 
 class UserService:
     def __init__(self, db: Session):
@@ -46,4 +46,4 @@ class UserService:
         try:
             return self.db.query(User).all()
         except SQLAlchemyError as e:
-            raise DatabaseError(ErrorMessages.DATABASE_ERROR.format(str(e)))
+            raise DatabaseError(ErrorMessages.DATABASE_ERROR.format(str(e))) 

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field
 from typing import Literal
 
-from .constants import ValidationRules, ErrorMessages
+from app.constants import ValidationRules, ErrorMessages
 
 class UserSignup(BaseModel):
     email: EmailStr
@@ -31,4 +31,4 @@ class UserResponse(BaseModel):
     goal: str
 
     class Config:
-        from_attributes = True  # This enables ORM model -> Pydantic model conversion
+        from_attributes = True  # This enables ORM model -> Pydantic model conversion 

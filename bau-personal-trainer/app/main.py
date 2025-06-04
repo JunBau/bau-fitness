@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from app.routes import router
+from app.api import api_router
+from app.database_init import init_db
 
 app = FastAPI(title="Fitness App API")
 
-app.include_router(router)
+# Initialize database
+init_db()
+
+app.include_router(api_router)
