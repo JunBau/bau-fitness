@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, Float, String, CheckConstraint
+from sqlalchemy.orm import relationship
 
 from app.database import Base
 
@@ -11,6 +12,9 @@ class User(Base):
     weight = Column(Float, nullable=False)
     height = Column(Float, nullable=False)
     goal = Column(String, nullable=False)  # "lose", "maintain", "gain"
+
+    # Relationships
+    workout_plans = relationship("WorkoutPlan", back_populates="user")
 
     # Add check constraints
     __table_args__ = (
